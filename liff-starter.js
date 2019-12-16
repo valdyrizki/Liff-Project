@@ -102,4 +102,26 @@ function registerButtonHandlers() {
             external: true
         });
     });
+
+    document.getElementById('closeWindowButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.closeWindow();
+        }
+    });
+
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            liff.login();
+        }
+    });
+ 
+    document.getElementById('liffLogoutButton').addEventListener('click', function() {
+        if (liff.isLoggedIn()) {
+            liff.logout();
+            window.location.reload();
+        }
+    });
+
 }
